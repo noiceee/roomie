@@ -1,0 +1,58 @@
+.banner {
+  background-color: black;
+  height: 50vh;
+  position: relative;
+  overflow: hidden;
+  a{
+    text-decoration: none;
+  }
+  img{
+    object-fit: cover;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.7;
+  }
+}
+
+.banner__info {
+  color: white;
+  position: absolute;
+  left: 60px;
+  bottom: 60px;
+  width: 369px;
+  h1{
+    font-size: 40px;
+  }
+  button {
+    background-color: #ff7779;
+    color: white;
+    text-transform: inherit;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 18px;
+    &:hover {
+      background-color: white;
+      color: #ff7779;
+    }
+  }
+  h5{
+    margin-top: 10px;
+    font-size: 20px;
+  }
+}
+
+.banner__search {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner__searchButton {
+  background-color: white !important;
+  font-weight: 900 !important;
+  text-transform: inherit !important;
+  color: #ff7779 !important;
+}
+

@@ -1,0 +1,92 @@
+.signup {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    color: white;
+    background: radial-gradient(rgba(10, 10, 10, 0.287), rgba(0, 0, 0, 0.856)),
+      url("https://images.unsplash.com/photo-1505691723518-36a5ac3be353?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+    background-size: cover;
+    .top {
+      .wrapper {
+        padding: 30px 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+  
+        h1{
+          color: var(--base-color);
+          font-size: 36px;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          font-weight: 900;
+        }
+      }
+    }
+    .container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      top: 0%;
+  
+      form {
+        background-color: black;
+        width: 340px;
+        height: 440px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        padding: 30px;
+        justify-content: space-around;
+        background: rgba(255, 255, 255, 0.548);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(13px);
+        -webkit-backdrop-filter: blur(13px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        input {
+          border: none;
+          background-color: gray;
+          color: white;
+          height: 50px;
+          border-radius: 5px;
+          padding: 0px 10px;
+          font-size: 1rem;
+  
+          &::placeholder {
+            color: lightgray;
+          }
+        }
+  
+        button {
+          background-color: var(--base-color);
+          color: white;
+          border: none;
+          border-radius: 5px;
+          height: 50px;
+          font-size: 1.1rem;
+          font-weight: 500;
+          cursor: pointer;
+  
+          &:hover {
+            background-color: rgb(255, 93, 93);
+          }
+        }
+  
+        span,
+        small {
+          color: rgb(226, 226, 226);
+          b {
+            color: white;
+            cursor: pointer;
+          }
+        }
+        span {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,25 @@
+.cards-container{
+  display: flex;
+  gap: 36px;
+  width: 100vw;
+  padding: 30px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  .card{
+    width: calc((100vw  - 190px)/ 4);
+    // flex-shrink: 0;
+    flex-wrap: wrap;
+    @media screen and (max-width: 1080px) {
+      width: calc((100vw  - 190px)/ 3);
+    }
+    @media screen and (max-width: 1080px) {
+      width: calc((100vw  - 150px)/ 3);
+    }
+    @media screen and (max-width: 720px) {
+      width: calc((100vw  - 108px)/ 2);
+    }
+    @media screen and (max-width: 620px) {
+      width: calc((100vw  - 76px)/ 1);
+    }
+  }
+}

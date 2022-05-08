@@ -1,0 +1,132 @@
+.creation {
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  position: absolute;
+  width: 100%;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .creation-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  .left {
+    .left-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 320px;
+      img {
+        // margin-left: 100px;
+        margin-bottom: 10px;
+        width: min(300px, 100%);
+      }
+      h2 {
+        width: fit-content;
+        margin-right: 0px;
+        margin-left: 0px;
+      }
+    }
+  }
+  .middle-line {
+    width: 1px;
+    height: 200px;
+    background-color: grey;
+  }
+  .right {
+    padding: 30px;
+    padding-left: 0px;
+    width: 50%;
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      button {
+        height: 54px;
+        width: 236px;
+        background-color: var(--base-color);
+        color: white;
+        font-size: 18px;
+        &:hover {
+          background-color: rgb(255, 77, 77);
+        }
+      }
+    }
+  }
+  &.success {
+    position: static;
+    transform: none;
+    background:  linear-gradient(90deg, rgba(255, 128, 128, 0.233), rgba(255, 255, 255, 0)), url('./success.png');
+    height: 100vh;
+    box-sizing: border-box;
+    width: 100vw;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    padding: 200px 0px;
+    font-size: 24px;
+    > a > button {
+      background-color: white;
+      padding: 10px 15px;
+      color: var(--base-color);
+      font-weight: 600;
+    }
+    a{
+        text-decoration: none;
+    }
+    .heading-wrapper {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+      width: min(90%, 800px);
+    }
+    .social-icons {
+      display: flex;
+      align-items: center;
+      .button {
+        font-size: 26px;
+        height: 50px;
+        margin-left: 10px;
+        width: 50px;
+        border: 3px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .button i {
+        font-size: 26px;
+        z-index: 1;
+        color: #333;
+      }
+      .fill {
+        background-color: #333;
+        height: 130%;
+        width: 130%;
+        border-radius: 50%;
+        position: absolute;
+        left: -105%;
+        bottom: -105%;
+        transition: all 0.5s ease;
+      }
+      .button:hover .fill {
+        transform: translate(70%, -70%);
+      }
+      .button:hover i {
+        color: white;
+      }
+    }
+  }
+}
