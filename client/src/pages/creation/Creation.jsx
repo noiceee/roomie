@@ -7,6 +7,7 @@ import mansion from "./mansion.png";
 import { ThemeProvider } from "@material-ui/core";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import S3FileUpload from "react-s3";
 
 function Creation() {
   const [title, setTitle] = useState("");
@@ -26,6 +27,7 @@ function Creation() {
       },
     },
   });
+
   function handleSubmit(e) {
     e.preventDefault();
     const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
@@ -38,11 +40,34 @@ function Creation() {
       desc: desc,
       ownerName: loggedUser.name,
       contact: loggedUser.contact,
-      location: location
+      location: location,
     };
     axios.post("/homes", payLoad);
     setIsSubmitted(true);
   }
+
+  function onFileChange(file){
+    //s3 bucket details
+
+    const config = {
+      bucketName: "",
+      dirName: "",
+      region: "",
+      accessKeyId: "",
+      secretAccessKey: "",
+    };
+
+    //upload file to s3
+
+    S3FileUpload.uploadFile(file, config)
+      .then((data) => {
+        console.log(data.location); // it return the file url
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
   return (
     <ThemeProvider theme={theme}>
       {!isSubmitted ? (
@@ -109,6 +134,10 @@ function Creation() {
                     maxRows={4}
                     value={desc}
                     onChange={(e) => setDesc(e.target.value)}
+                  />
+                  <input
+                    type="file"
+                    onChange={onFileChange}
                   />
                   <Button variant="contained" type="submit">
                     Submit

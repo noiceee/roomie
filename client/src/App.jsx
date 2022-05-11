@@ -7,6 +7,7 @@ import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import axios from "axios";
 import Creation from "./pages/creation/Creation";
+import View from "./pages/view/View";
 
 function App() {
   axios.defaults.baseURL = "http://localhost:4040/api";
@@ -26,6 +27,10 @@ function App() {
         <Route
           path="/creation"
           element={user ? <Creation /> : <Navigate to={"/login"} />}
+        />
+        <Route
+          path="/view"
+          element={user ? <View /> : <Navigate to={"/login"} />}
         />
         <Route path="/search" element={<SearchPage />} />
       </Switch>

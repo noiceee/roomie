@@ -1,7 +1,7 @@
 import React from "react";
 import "./SearchResult.scss";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SearchResult({
   img,
@@ -12,14 +12,34 @@ function SearchResult({
   price,
   lookingFor,
   ownerName,
+  contact
 }) {
   const [heart, setHeart] = useState(false);
+  const navigate = useNavigate();
+  function goToView() {
+    navigate("/view", {
+      state: {
+        img,
+        location,
+        title,
+        description,
+        tenants,
+        price,
+        lookingFor,
+        ownerName,
+        contact
+      }
+    });
+  }
   return (
-    <div className="searchResult">
+    <div className="searchResult" onClick={goToView}>
       <img src={img} alt="" />
       {/* <FavoriteBorderIcon className="searchResult__heart" /> */}
       <div className="stage searchResult__heart">
-        <div className={`heart ${heart ? "is-active" : ""}`} onClick={()=>setHeart((prev)=>!prev)}></div>
+        <div
+          className={`heart ${heart ? "is-active" : ""}`}
+          onClick={() => setHeart((prev) => !prev)}
+        ></div>
       </div>
       <div className="searchResult__info">
         <div className="searchResult__infoTop">

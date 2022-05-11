@@ -44,6 +44,7 @@ function SearchPage() {
               location={home.location}
               tenants={home.tenants}
               ownerName={home.ownerName}
+              contact={home.contact}
             />
           );
         })}
