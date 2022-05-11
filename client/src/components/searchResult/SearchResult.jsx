@@ -15,7 +15,7 @@ function SearchResult({
   lookingFor,
   ownerName,
   contact,
-  showDelete
+  showDelete,
 }) {
   const [heart, setHeart] = useState(false);
   const navigate = useNavigate();
@@ -30,13 +30,13 @@ function SearchResult({
         price,
         lookingFor,
         ownerName,
-        contact
+        contact,
       },
     });
   }
-  function deletePost(e){
+  function deletePost(e) {
     e.stopPropagation();
-    axios.patch(`/homes/${id}`).then((found)=>{
+    axios.patch(`/homes/${id}`).then((found) => {
       window.location.reload();
     });
   }
@@ -47,7 +47,10 @@ function SearchResult({
       <div className="stage searchResult__heart">
         <div
           className={`heart ${heart ? "is-active" : ""}`}
-          onClick={() => setHeart((prev) => !prev)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setHeart((prev) => !prev);
+          }}
         ></div>
       </div>
       <div className="searchResult__info">
@@ -68,7 +71,11 @@ function SearchResult({
           </div>
         </div>
 
-        {showDelete && <button className="delete-button" onClick={deletePost}>Delete</button>}
+        {showDelete && (
+          <button className="delete-button" onClick={deletePost}>
+            Delete
+          </button>
+        )}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function Header() {
+  const user = localStorage.getItem("loggedUser");
   const [profileToggle, setProfileToggle] = useState(false);
   function profileToggler() {
     console.log(profileToggle);
@@ -19,7 +20,10 @@ function Header() {
     window.location.href = "/";
   }
   function navigateToYourPosts() {
-    window.location.href="/posts";
+    window.location.href = "/posts";
+  }
+  function navigateToYourLogin() {
+    window.location.href = "/login";
   }
   return (
     <div className="header">
@@ -44,20 +48,28 @@ function Header() {
         <LanguageIcon />
         <ExpandMoreIcon />
         <Avatar onClick={profileToggler} style={{ cursor: "pointer" }} />
-        <div className="pop-up-wrapper" style={{ display: profileToggle ? "block" : "none" }}>
+        {!user ? (
           <div
-            className="logout"
-            onClick={navigateToYourPosts}
+            className="pop-up-wrapper"
+            style={{ display: profileToggle ? "block" : "none" }}
           >
-            Your Posts
+            <div className="logout" onClick={navigateToYourLogin}>
+              Log In
+            </div>
           </div>
+        ) : (
           <div
-            className="logout"
-            onClick={logOut}
+            className="pop-up-wrapper"
+            style={{ display: profileToggle ? "block" : "none" }}
           >
-            Logout
+            <div className="logout" onClick={navigateToYourPosts}>
+              Your Posts
+            </div>
+            <div className="logout" onClick={logOut}>
+              Logout
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
