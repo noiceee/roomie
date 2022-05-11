@@ -8,16 +8,19 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function Header() {
-    const [profileToggle, setProfileToggle] = useState(false);
-    function profileToggler(){
-        console.log(profileToggle);
-        setProfileToggle((prev) => !prev);
-    }
-    function logOut(){
-        localStorage.clear();
-        profileToggler();
-        window.location.href = "/";
-    }
+  const [profileToggle, setProfileToggle] = useState(false);
+  function profileToggler() {
+    console.log(profileToggle);
+    setProfileToggle((prev) => !prev);
+  }
+  function logOut() {
+    localStorage.clear();
+    profileToggler();
+    window.location.href = "/";
+  }
+  function navigateToYourPosts() {
+    window.location.href="/posts";
+  }
   return (
     <div className="header">
       <Link to="/" className="header-logo">
@@ -40,8 +43,21 @@ function Header() {
         </Link>
         <LanguageIcon />
         <ExpandMoreIcon />
-        <Avatar onClick={profileToggler} style={{cursor: 'pointer'}}/>
-        <div className="logout" style={{display : profileToggle ? 'block' : 'none'}} onClick={logOut}>Logout</div>
+        <Avatar onClick={profileToggler} style={{ cursor: "pointer" }} />
+        <div className="pop-up-wrapper" style={{ display: profileToggle ? "block" : "none" }}>
+          <div
+            className="logout"
+            onClick={navigateToYourPosts}
+          >
+            Your Posts
+          </div>
+          <div
+            className="logout"
+            onClick={logOut}
+          >
+            Logout
+          </div>
+        </div>
       </div>
     </div>
   );

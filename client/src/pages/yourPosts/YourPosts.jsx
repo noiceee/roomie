@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import "./SearchPage.scss";
-import { Button } from "@material-ui/core";
+import "./YourPosts.scss";
 import SearchResult from "../../components/searchResult/SearchResult";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
@@ -11,10 +10,12 @@ function SearchPage() {
   console.log(window.location.pathname);
   const [homeList, setHomeList] = useState([]);
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("loggedUser"));
     console.log("useEffect ran");
     axios
-      .get("/homes/random")
+      .get(`/homes/find/${user.contact}`)
       .then((res) => {
+          console.log(res);
         setHomeList(res.data);
       })
       .catch((err) => console.log(err));
@@ -23,19 +24,11 @@ function SearchPage() {
     <>
       <Header />
       <div className="searchPage">
-        <div className="searchPage__info">
-          <p>62 stays · 26 august to 30 august · 2 guest</p>
-          <h1>Stays nearby</h1>
-          <Button variant="outlined">Cancellation Flexibility</Button>
-          <Button variant="outlined">Type of place</Button>
-          <Button variant="outlined">Price</Button>
-          <Button variant="outlined">Rooms and beds</Button>
-          <Button variant="outlined">More filters</Button>
-        </div>
         {homeList.map((home, i) => {
           return (
             <SearchResult
               key={home._id}
+              id={home._id}
               img={home.img}
               title={home.title}
               description={home.desc}
@@ -45,6 +38,7 @@ function SearchPage() {
               tenants={home.tenants}
               ownerName={home.ownerName}
               contact={home.contact}
+              showDelete={true}
             />
           );
         })}

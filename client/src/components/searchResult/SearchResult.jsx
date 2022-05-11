@@ -2,8 +2,10 @@ import React from "react";
 import "./SearchResult.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function SearchResult({
+  id,
   img,
   location,
   title,
@@ -12,7 +14,8 @@ function SearchResult({
   price,
   lookingFor,
   ownerName,
-  contact
+  contact,
+  showDelete
 }) {
   const [heart, setHeart] = useState(false);
   const navigate = useNavigate();
@@ -28,7 +31,13 @@ function SearchResult({
         lookingFor,
         ownerName,
         contact
-      }
+      },
+    });
+  }
+  function deletePost(e){
+    e.stopPropagation();
+    axios.patch(`/homes/${id}`).then((found)=>{
+      window.location.reload();
     });
   }
   return (
@@ -58,6 +67,8 @@ function SearchResult({
             <h2>{price}</h2>
           </div>
         </div>
+
+        {showDelete && <button className="delete-button" onClick={deletePost}>Delete</button>}
       </div>
     </div>
   );

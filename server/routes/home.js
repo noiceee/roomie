@@ -40,8 +40,18 @@ router.get("/random", (req, res) => {
 
 //GET home by id
 
-router.get("/find/:id", (req, res) => {
-  Home.findById(req.params.id, (err, foundHome) => {
+router.get("/find/:contact", (req, res) => {
+  Home.find({contact: req.params.contact, isActive: true}, (err, foundHome) => {
+    if (err) {
+      res.status(401).json(err);
+    } else {
+      res.status(200).json(foundHome);
+    }
+  });
+});
+
+router.patch("/:id", (req, res) => {
+  Home.findByIdAndUpdate(req.params.id, {isActive: false}, (err, foundHome) => {
     if (err) {
       res.status(401).json(err);
     } else {
